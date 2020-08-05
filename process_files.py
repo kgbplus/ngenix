@@ -29,7 +29,7 @@ def process_xml(xml_string: str) -> Tuple:
 def process_files(path: str) -> List[Tuple]:
     """ Multicore process dispatcher """
     res: List[Tuple] = []
-    with mp.Pool(processes=mp.cpu_count())as pool:
+    with mp.Pool(processes=mp.cpu_count()) as pool:
         for file in sorted(glob.glob(os.path.join(path, '*.zip'))):
             logger.debug('Processing %s', file)
             with zipfile.ZipFile(file, 'r') as f:
